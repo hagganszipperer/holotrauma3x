@@ -1,0 +1,4 @@
+protocol:
+  experiment: ablation_modality_cbct_dental
+  arrival:
+    modalities: [cbct, dental]

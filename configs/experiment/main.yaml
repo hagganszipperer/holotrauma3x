@@ -1,0 +1,80 @@
+protocol:
+  experiment: main
+  arrival:
+    cohort_size: 8427
+    volume_size: 32
+    point_count: 16384
+    radiograph_size: 256
+    fps_points: 16384
+    outlier_k: 20
+    outlier_std: 2.5
+    modalities: [cbct, dental, cephalogram]
+  encoder:
+    volumetric:
+      patch: 8
+      layers: 10
+      dim: 512
+      heads: 8
+      feedforward: 2048
+      dropout: 0.15
+    point:
+      radii: [0.12, 0.25, 0.5, 1.0]
+      samples: [512, 256, 128, 64]
+      out_dim: 256
+    radiograph:
+      out_dim: 256
+      reduction: 16
+    fusion:
+      weight_volume: 1.5
+      weight_dental: 0.8
+      weight_cephalogram: 1.2
+      enc_dim: 1024
+      heads: 8
+    fusion_mode: cross_modal
+  coreasoning:
+    clip_dim: 1024
+    proj_dim: 768
+    decoder_layers: 6
+    decoder_heads: 8
+    decoder_hidden: 512
+    vocab: 4800
+    knowledge_size: 15400
+    top_m: 7
+    confidence_threshold: 0.75
+    engine: grammar
+    temperature: 0.3
+  optimization:
+    weight_airway: 10.0
+    weight_stabilization: 5.0
+    weight_function: 2.0
+    weight_longterm: 1.0
+    airway_beta: [5.0, 1.8]
+    airway_critical: 50.0
+    stabilization_gamma: [3.0, 2.0]
+    occlusion_alpha: [2.0, 1.5, 1.0, 1.0]
+    learning_rate: 0.002
+    max_iterations: 120
+    priority_aware: true
+  robot:
+    dof: 7
+    exploration: 0.35
+    safety_margin: 5.0
+    alpha_time: 2.0
+    max_iterations: 3500
+    connection_radius: 0.5
+    step_size: 0.1
+    goal_threshold: 0.05
+    policy_layers: 4
+    policy_units: 256
+    policy_dropout: 0.25
+    obstacle_grid: 64
+    uncertainty_grid: 32
+    neural_guidance: true
+  training:
+    epochs: 150
+    patience: 20
+    batch_size: 128
+    learning_rate: 0.0001
+    seed: 42
+    folds: 5
+    centers: 12

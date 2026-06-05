@@ -1,0 +1,4 @@
+protocol:
+  experiment: supplementary_threshold_sweep
+  optimization:
+    airway_critical: 60.0

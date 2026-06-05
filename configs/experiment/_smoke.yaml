@@ -1,0 +1,50 @@
+protocol:
+  experiment: smoke
+  arrival:
+    cohort_size: 16
+    volume_size: 8
+    point_count: 256
+    radiograph_size: 32
+    fps_points: 256
+  encoder:
+    volumetric:
+      patch: 4
+      layers: 3
+      dim: 32
+      heads: 4
+      feedforward: 64
+      dropout: 0.0
+    point:
+      radii: [0.2, 0.4, 0.6, 0.8]
+      samples: [64, 32, 16, 8]
+      out_dim: 32
+    radiograph:
+      out_dim: 32
+      reduction: 4
+    fusion:
+      enc_dim: 64
+      heads: 4
+    fusion_mode: cross_modal
+  coreasoning:
+    clip_dim: 64
+    proj_dim: 48
+    decoder_layers: 2
+    decoder_heads: 4
+    decoder_hidden: 32
+    vocab: 64
+    knowledge_size: 128
+    top_m: 5
+  optimization:
+    max_iterations: 10
+  robot:
+    dof: 2
+    max_iterations: 400
+    obstacle_grid: 4
+    uncertainty_grid: 4
+  training:
+    epochs: 2
+    batch_size: 4
+    max_steps: 6
+    folds: 2
+    centers: 3
+    seed: 42

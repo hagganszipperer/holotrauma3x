@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "holotrauma3x"
+version = "0.1.0"
+description = "Triadic VLM-LLM co-reasoning with priority-aware planning and robot trajectory decoding for emergency maxillofacial trauma"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+dependencies = [
+    "torch>=2.1,<3",
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "pyyaml>=6",
+    "jsonargparse[signatures]>=4.40",
+]
+
+[project.optional-dependencies]
+backbones = ["transformers>=4.40"]
+api = ["openai>=1.30"]
+dev = ["pytest>=8", "ruff>=0.4", "black>=24.3", "isort>=5.13", "mypy>=1.9", "pre-commit>=3.6"]
+
+[project.scripts]
+holotrauma3x = "holotrauma3x.orders:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["holotrauma3x"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["B008"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["holotrauma3x"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["src/holotrauma3x"]
+
+[[tool.mypy.overrides]]
+module = ["jsonargparse.*", "transformers.*", "openai.*", "scipy.*", "yaml"]
+ignore_missing_imports = true
+implicit_reexport = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

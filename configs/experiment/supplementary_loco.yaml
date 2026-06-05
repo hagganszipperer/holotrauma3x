@@ -1,0 +1,5 @@
+protocol:
+  experiment: supplementary_loco
+  training:
+    centers: 12
+    folds: 12

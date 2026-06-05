@@ -1,0 +1,4 @@
+protocol:
+  experiment: ablation_robot
+  robot:
+    neural_guidance: false

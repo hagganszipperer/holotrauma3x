@@ -1,0 +1,4 @@
+protocol:
+  experiment: ablation_fusion_early
+  encoder:
+    fusion_mode: early

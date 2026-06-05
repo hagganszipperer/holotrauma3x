@@ -1,0 +1,42 @@
+protocol:
+  experiment: base
+  arrival:
+    cohort_size: 64
+    volume_size: 32
+    point_count: 16384
+    radiograph_size: 256
+    modalities: [cbct, dental, cephalogram]
+  encoder:
+    volumetric: {patch: 8, layers: 10, dim: 512, heads: 8, feedforward: 2048, dropout: 0.15}
+    point: {radii: [0.12, 0.25, 0.5, 1.0], samples: [512, 256, 128, 64], out_dim: 256}
+    radiograph: {out_dim: 256, reduction: 16}
+    fusion: {weight_volume: 1.5, weight_dental: 0.8, weight_cephalogram: 1.2, enc_dim: 1024, heads: 8}
+    fusion_mode: cross_modal
+  coreasoning:
+    proj_dim: 768
+    decoder_layers: 6
+    decoder_hidden: 512
+    vocab: 4800
+    knowledge_size: 15400
+    top_m: 7
+    confidence_threshold: 0.75
+    engine: grammar
+  optimization:
+    weight_airway: 10.0
+    weight_stabilization: 5.0
+    weight_function: 2.0
+    weight_longterm: 1.0
+    airway_critical: 50.0
+    learning_rate: 0.002
+    max_iterations: 120
+  robot:
+    dof: 7
+    exploration: 0.35
+    safety_margin: 5.0
+    max_iterations: 3500
+  training:
+    epochs: 150
+    patience: 20
+    seed: 42
+    folds: 5
+    centers: 12

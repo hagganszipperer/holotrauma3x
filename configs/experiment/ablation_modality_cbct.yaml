@@ -1,0 +1,4 @@
+protocol:
+  experiment: ablation_modality_cbct
+  arrival:
+    modalities: [cbct]

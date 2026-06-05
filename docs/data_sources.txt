@@ -1,0 +1,44 @@
+HoloTrauma 3X - Data Sources and Access Links
+=============================================
+
+Scope
+-----
+This file lists every data source referenced by the manuscript and how each can be
+accessed. The manuscript describes its data by license and access mechanism only; it does
+not print any direct download URL or DOI for the datasets. No access links have been
+invented here - where the paper gives no URL, that is stated explicitly.
+
+1. Public craniomaxillofacial imaging datasets
+----------------------------------------------
+- Description : publicly available craniomaxillofacial imaging datasets aggregated from
+               12 institutions (emergency CBCT, intraoral / dental cast scans, lateral
+               cephalometric radiographs), 2018-2024.
+- License     : CC BY 4.0 or CC BY-NC-SA 4.0 (per source).
+- Access      : used under each source's respective open-access license.
+- Access link : not stated in the manuscript. Obtain each dataset from its own
+               open-access portal under the license above.
+
+2. Participating-hospital clinical data (controlled access)
+-----------------------------------------------------------
+- Description : de-identified retrospective clinical data from three participating
+               hospitals, combined into the multi-institutional cohort
+               (8,427 patients, ~1.2 TB imaging; 847 acute-trauma and 347
+               robot-assisted sub-cohorts).
+- License     : institutional Data Use Agreements (DUA); IRB-waived retrospective use.
+- Access      : controlled access; the de-identified multi-institutional dataset is made
+               available in accordance with institutional data use agreements, with
+               requests directed to the corresponding authors.
+- Access link : not applicable (no public URL); access is request-based under a DUA.
+
+3. Synthetic cohort shipped with this code release
+--------------------------------------------------
+- Description : deterministic synthetic trauma cohort generated at runtime so the full
+               pipeline runs without restricted clinical data.
+- Access      : generated locally; no download required.
+- Access link : none (produced by holotrauma3x.arrival.cohort at runtime).
+
+Notes
+-----
+- No direct access URLs or DOIs for the datasets are stated in the manuscript.
+- Public datasets must be obtained from their original sources under their stated licenses;
+  the controlled-access clinical cohort requires an approved data use agreement.

@@ -1,0 +1,4 @@
+protocol:
+  experiment: ablation_fusion_concat
+  encoder:
+    fusion_mode: concat
